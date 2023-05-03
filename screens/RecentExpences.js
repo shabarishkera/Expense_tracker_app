@@ -2,13 +2,15 @@ import React, { useContext } from 'react'
 import { View,StyleSheet } from 'react-native'
 import ExpensesOutput from '../components/ExpensesOutput'
 import {context} from '../store/context'
-
+import gerecent from '../functions/getrecent'
 export default function RecentExpences() {
 const {data}=useContext(context);
-  console.log(data)
+
   const recent=data.filter((expense)=>{
-return true
-  })
+const today=new Date();
+const datebefore7=gerecent(today,7);
+return expense.date>datebefore7;
+  });
   return (
    
     <View style={style.container}>

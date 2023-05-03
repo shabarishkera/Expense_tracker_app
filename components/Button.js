@@ -17,7 +17,7 @@ export default function Button({onPress,children}) {
 
 const style=StyleSheet.create({
 contaier:{padding:8,
-  backgroundColor:GlobalStyles.colors.primary500,
+  backgroundColor:GlobalStyles.colors.primary50,
   borderRadius:4,
 
 

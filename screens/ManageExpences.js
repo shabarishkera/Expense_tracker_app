@@ -1,11 +1,13 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useContext, useLayoutEffect } from 'react'
 import { View ,Text,StyleSheet} from 'react-native'
 import { EvilIcons } from '@expo/vector-icons';
 import { GlobalStyles } from '../constants/constant';
 import Button from '../components/Button';
 import { useNavigation } from '@react-navigation/native';
+import { context } from '../store/context';
 
 export default function ManageExpences({route}) {
+  const {removeExpense,addExpense,updateExpense}=useContext(context);
   const navigation=useNavigation();
 const  id=route.params?.id;
 isEditing=!!id;
@@ -18,11 +20,16 @@ const closeManageExpense=()=>
 
   navigation.goBack();
 }
+const deleteExpense=()=>{
+  removeExpense(id);
+  navigation.goBack();
+
+}
 
   return (
    <View style={style.container}>
     <View style={style.deleteContainer}>
-    {isEditing&&<EvilIcons name="trash" size={24} color={GlobalStyles.colors.error500}/>}
+    {isEditing&&<Button onPress={deleteExpense}><EvilIcons name="trash" size={24} color={GlobalStyles.colors.error500}/></Button>}
     </View>
     <View style={style.optionsContainer}>
 <Button onPress={closeManageExpense}>Cancel</Button>
