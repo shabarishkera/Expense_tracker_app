@@ -35,6 +35,7 @@ const style=StyleSheet.create({
     backgroundColor:GlobalStyles.colors.primary500,
     flexDirection:'row',
     elevation:5,
+    borderRadius:6,
 justifyContent:'space-between'
 
     },

@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from 'react'
+import { View } from 'react-native';
 
 const DUMMY = [
     {
@@ -22,13 +23,16 @@ const DUMMY = [
  const reducer = (state, action) => {
     switch (action.type) {
         case 'add':
-            return [
+        var  newstate= [
                 ...state, {
                     ...action.payload
                 }
             ]
+            console.log(newstate);
+           return newstate
         case 'delete':
-            state.filter((item) => item.id != action.payload)
+
+            return  state.filter((item) => item.id != action.payload)
         case 'update':
             const toupdate = state.findIndex((expense) => expense.id == action.payload.id)
             const update = state[toupdate];
@@ -46,23 +50,26 @@ const DUMMY = [
 const  StoreWrapper=(props)=>
  {
     const [data, dispatch] = useReducer(reducer,DUMMY);
-    function addExpense({ expenseData }) {
-        id = new Date.toString() + Math.random().toString();
+    function addExpense(expenseData) {
+        id = new Date().toString() + Math.random().toString();
+      
         dispatch({
             type: 'add',
             payload: {
-                expenseData,
+               ... expenseData,
                 id
             }
         })
     }
     function removeExpense(id) {
+       
         dispatch({ type: 'delete', payload: id })
     }
-    function updateExpese(data) {
-        dispatch({ type: 'update', payload: data })
+    function updateExpense(data) {
+       
+        dispatch({ type: 'update', payload:data })
     }
 
-    return <context.Provider value={{data,addExpense,removeExpense,updateExpese}}>{props.children}</context.Provider>
+     return <View style={{flex:1}}><context.Provider  value={{data,addExpense,removeExpense,updateExpense}}>{props.children}</context.Provider></View>
  }
 export default StoreWrapper;

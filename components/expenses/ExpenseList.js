@@ -15,6 +15,7 @@ return <Expenseitem {...item.item} />
 const style=StyleSheet.create({
     container:
     {
-    flex:1
+    flex:1,
+    marginBottom:32,
     }
     })

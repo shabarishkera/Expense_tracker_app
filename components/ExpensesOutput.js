@@ -6,29 +6,40 @@ import { GlobalStyles } from '../constants/constant'
 import context from '../store/context'
 import StoreWrapper from '../store/context'
 export default function ExpensesOutput({ period,expenses}) {
-   
+    const fallback=<Text style={style.fallback}>Nothing to Display</Text>
 
+
+    if(expenses.length>0)
+   var  content=  <View>
+    <ExpenseList expenses={expenses}/>
+</View>
+else content=fallback;
     return (
       
-        <StoreWrapper>
+       <>
         <View style={style.container}>
             <ExpenseSummary period={period}
                 expenses={expenses}/>
-            <View>
-                <ExpenseList expenses={expenses}/>
-            </View>
-
+          {content}
         </View>
-        <Text></Text>
-        </StoreWrapper>
+        </>
     )
 }
  const style=StyleSheet.create({
 container:{
     flex:1,
     padding:23,
-    backgroundColor:GlobalStyles.colors.primary700
+    backgroundColor:GlobalStyles.colors.primary700,
+    marginBottom:0
 
+
+},
+fallback:{
+color:'white',
+padding:8,
+fontSize:17,
+textAlign:'center',
+marginTop:100
 
 }
 

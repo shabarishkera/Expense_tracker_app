@@ -6,7 +6,7 @@ export default function Button({onPress,children}) {
     <View style={style.contaier}>
 
    
-   <Pressable onPress={onPress}>
+   <Pressable onPress={onPress} android_ripple={{backgroundColor:'black'}}>
     <View style={style.textcontainer}>
 <Text style={style.text}>{children}</Text>
 </View>
@@ -30,9 +30,8 @@ color:GlobalStyles.colors.primary500,
 },
 textcontainer:{
   backgroundColor:GlobalStyles.colors.primary50,
-  padding:10,
+  padding:0,
   borderRadius:5
-
 }
 
 

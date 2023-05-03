@@ -48,7 +48,7 @@ navigation.navigate("manageExpense")
  }
   return (
     <>
-    <StoreWrapper>
+    <StoreWrapper >
      <StatusBar style="light" />
      <NavigationContainer>
     <stack.Navigator>
