@@ -4,14 +4,17 @@ import ExpensesOutput from '../components/ExpensesOutput'
 import {context} from '../store/context'
 import gerecent from '../functions/getrecent'
 import { fetchExpsne } from '../functions/http'
+import LoadingScreen from '../components/LoadingScreen'
 export default function RecentExpences() {
 const {data,setExpense}=useContext(context);
-const [fetchedExpesnse,setFethedExpense]=useState([]);
+const [isFetching,setFetching]=useState(true);
 useEffect(()=>{
 async function getExpnse()
 {
+  setFetching(true);
  const expese =await fetchExpsne();
  setExpense(expese);
+ setFetching(false);
 }
 getExpnse();
 
@@ -22,6 +25,8 @@ const today=new Date();
 const datebefore7=gerecent(today,7);
 return expense.date>datebefore7;
   });
+  if(isFetching)
+  return <LoadingScreen/>
   return (
    
     <View style={style.container}>

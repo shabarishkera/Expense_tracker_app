@@ -7,6 +7,7 @@ import { context } from '../store/context';
 import { useNavigation } from '@react-navigation/native';
 import format from '../functions/date';
 import{editExpense, storeExpense} from '../functions/http'
+import LoadingScreen from './LoadingScreen';
 export default function ExpenseForm({isEditing,id}) {
   console.log(id,isEditing)
 const[input,setInput]=useState({
@@ -28,9 +29,11 @@ const {addExpense,updateExpense,data}=useContext(context);
  const defaulttitle=defaultexpense.title;
  setInput({title:defaulttitle,id:id,amount:defaultamount.toString(),date:defaultdate})
 } },[]);
+const [issubmiting,setsubmiting]=useState(false);
 
  const handleConfirm=async ()=>
  {
+
  const expense={
   title:input.title,
   date:new Date(input.date),
@@ -44,7 +47,7 @@ if(!isamtvalid||!isdatevalid||!istitleValid)
 Alert.alert("Invalid","Given input is invalid")
 return ;  
 }
-
+setsubmiting(true)
  if(isEditing)
  {
  updateExpense({...expense,id:id});
@@ -56,6 +59,7 @@ return ;
   addExpense({...expense,id:id});
 
  }
+ setsubmiting(false)
  navigation.goBack();
  }
  function closeManageExpense()
@@ -68,6 +72,8 @@ navigation.goBack();
      setInput((old)=>{return {...old,[changed]:value}})
 
     }
+    if(issubmiting)
+    return <LoadingScreen/>
   return (
     <View>
 <Input lable='Title' config={{onChangeText:inputChangehandler.bind(this,'title'),autoCapitalize:'none',autoCorrect:false,value:input['title'], keyboardType:'default'} } />
