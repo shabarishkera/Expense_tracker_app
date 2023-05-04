@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { context } from '../store/context';
 import ExpenseForm from '../components/ExpenseForm';
 import { ScrollView } from 'react-native-gesture-handler';
+import { deletefireExpense } from '../functions/http';
 
 export default function ManageExpences({route}) {
   const {removeExpense,addExpense,updateExpense}=useContext(context);
@@ -23,8 +24,9 @@ const closeManageExpense=()=>
 
   navigation.goBack();
 }
-const deleteExpense=()=>{
-
+const deleteExpense=async()=>{
+  console.log(id)
+await deletefireExpense(id);
   removeExpense(id);
   navigation.goBack();
 

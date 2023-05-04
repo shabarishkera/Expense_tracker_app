@@ -1,10 +1,21 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { View,StyleSheet } from 'react-native'
 import ExpensesOutput from '../components/ExpensesOutput'
 import {context} from '../store/context'
 import gerecent from '../functions/getrecent'
+import { fetchExpsne } from '../functions/http'
 export default function RecentExpences() {
-const {data}=useContext(context);
+const {data,setExpense}=useContext(context);
+const [fetchedExpesnse,setFethedExpense]=useState([]);
+useEffect(()=>{
+async function getExpnse()
+{
+ const expese =await fetchExpsne();
+ setExpense(expese);
+}
+getExpnse();
+
+},[])
 
   const recent=data.filter((expense)=>{
 const today=new Date();

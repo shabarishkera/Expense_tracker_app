@@ -1,24 +1,7 @@
 import React, { createContext, useReducer } from 'react'
 import { View } from 'react-native';
 
-const DUMMY = [
-    {
-        id: '1',
-        title: 'ttt',
-        amount: 122,
-        date: new Date()
-    }, {
-        id: '2',
-        title: 'tfdftt',
-        amount: 122,
-        date: new Date()
-    }, {
-        id: '3',
-        title: 'ttfddt',
-        amount: 122,
-        date: new Date()
-    }
-];
+
  export const context = createContext([]);
  const reducer = (state, action) => {
     switch (action.type) {
@@ -30,6 +13,8 @@ const DUMMY = [
             ]
             console.log(newstate);
            return newstate
+
+           case 'set':  return action.payload.reverse();
         case 'delete':
 
             return  state.filter((item) => item.id != action.payload)
@@ -49,17 +34,21 @@ const DUMMY = [
 };
 const  StoreWrapper=(props)=>
  {
-    const [data, dispatch] = useReducer(reducer,DUMMY);
+    const [data, dispatch] = useReducer(reducer,[]);
     function addExpense(expenseData) {
-        id = new Date().toString() + Math.random().toString();
+       
       
         dispatch({
             type: 'add',
             payload: {
                ... expenseData,
-                id
+                
             }
         })
+    }
+    function setExpense(expnsearry)
+    {
+        dispatch({type:'set',payload:expnsearry})
     }
     function removeExpense(id) {
        
@@ -70,6 +59,6 @@ const  StoreWrapper=(props)=>
         dispatch({ type: 'update', payload:data })
     }
 
-     return <View style={{flex:1}}><context.Provider  value={{data,addExpense,removeExpense,updateExpense}}>{props.children}</context.Provider></View>
+     return <View style={{flex:1}}><context.Provider  value={{data,addExpense,removeExpense,updateExpense,setExpense}}>{props.children}</context.Provider></View>
  }
 export default StoreWrapper;

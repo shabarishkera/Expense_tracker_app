@@ -6,6 +6,7 @@ import Button from './Button';
 import { context } from '../store/context';
 import { useNavigation } from '@react-navigation/native';
 import format from '../functions/date';
+import{editExpense, storeExpense} from '../functions/http'
 export default function ExpenseForm({isEditing,id}) {
   console.log(id,isEditing)
 const[input,setInput]=useState({
@@ -28,7 +29,7 @@ const {addExpense,updateExpense,data}=useContext(context);
  setInput({title:defaulttitle,id:id,amount:defaultamount.toString(),date:defaultdate})
 } },[]);
 
- const handleConfirm=()=>
+ const handleConfirm=async ()=>
  {
  const expense={
   title:input.title,
@@ -45,10 +46,14 @@ return ;
 }
 
  if(isEditing)
- updateExpense({...expense,id:id})
+ {
+ updateExpense({...expense,id:id});
+ editExpense(id,expense);
+ }
  else
  {
-  addExpense(expense);
+   const id=await storeExpense(expense)
+  addExpense({...expense,id:id});
 
  }
  navigation.goBack();
