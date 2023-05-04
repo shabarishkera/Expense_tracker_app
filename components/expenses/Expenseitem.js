@@ -66,8 +66,4 @@ color:GlobalStyles.colors.primary50,
         fontWeight:'bold',
       
     }
-
-
-
-
     })

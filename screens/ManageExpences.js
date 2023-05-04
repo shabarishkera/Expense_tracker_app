@@ -12,6 +12,7 @@ export default function ManageExpences({route}) {
   const {removeExpense,addExpense,updateExpense}=useContext(context);
   const navigation=useNavigation();
 const  id=route.params?.id;
+
 const isEditing=!!id;
 useLayoutEffect(()=>{navigation.setOptions({
   title:isEditing?'edit':'Add Expense'

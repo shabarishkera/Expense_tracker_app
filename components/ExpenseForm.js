@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react'
-import { Text,View,StyleSheet
+import React, { useContext, useEffect, useState } from 'react'
+import { Text,View,StyleSheet, Alert
  } from 'react-native'
 import Input from './Input'
 import Button from './Button';
-import closeManageExpense from '../functions/closeManageExpense';
 import { context } from '../store/context';
 import { useNavigation } from '@react-navigation/native';
+import format from '../functions/date';
 export default function ExpenseForm({isEditing,id}) {
   console.log(id,isEditing)
 const[input,setInput]=useState({
@@ -16,16 +16,34 @@ title:''
 });
 
 const navigation=useNavigation();
-const {addExpense,updateExpense}=useContext(context);
+const {addExpense,updateExpense,data}=useContext(context);
+ useEffect(()=>{ 
+  if(id)
+{
+ const defaultexpense=data.find((xpense)=>xpense.id==id);
+ const defaultamount=defaultexpense.amount;
+ const defaultdate=format(defaultexpense.date);
+
+ const defaulttitle=defaultexpense.title;
+ setInput({title:defaulttitle,id:id,amount:defaultamount.toString(),date:defaultdate})
+} },[]);
+
  const handleConfirm=()=>
  {
  const expense={
   title:input.title,
   date:new Date(input.date),
   amount:parseInt(input.amount)
-
  }
- console.log(expense)
+const isamtvalid=!isNaN(expense.amount)&&expense.amount>0
+const isdatevalid=expense.date.toString()!=='Invalid Date';
+const istitleValid=expense.title.trim().length>0;
+if(!isamtvalid||!isdatevalid||!istitleValid)
+{
+Alert.alert("Invalid","Given input is invalid")
+return ;  
+}
+
  if(isEditing)
  updateExpense({...expense,id:id})
  else
@@ -35,7 +53,12 @@ const {addExpense,updateExpense}=useContext(context);
  }
  navigation.goBack();
  }
-    
+ function closeManageExpense()
+ {
+
+navigation.goBack();
+
+ }
     const inputChangehandler=(changed,value)=>{
      setInput((old)=>{return {...old,[changed]:value}})
 
