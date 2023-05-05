@@ -5,15 +5,24 @@ import {context} from '../store/context'
 import gerecent from '../functions/getrecent'
 import { fetchExpsne } from '../functions/http'
 import LoadingScreen from '../components/LoadingScreen'
+import ErorrScreen from '../components/ErorrScreen'
 export default function RecentExpences() {
 const {data,setExpense}=useContext(context);
 const [isFetching,setFetching]=useState(true);
+const [error,seterror]=useState(false);
 useEffect(()=>{
 async function getExpnse()
 {
   setFetching(true);
+  try{
  const expese =await fetchExpsne();
  setExpense(expese);
+  }
+  catch(err)
+  {
+    seterror('check your internet connection ! ')
+  }
+
  setFetching(false);
 }
 getExpnse();
@@ -25,6 +34,11 @@ const today=new Date();
 const datebefore7=gerecent(today,7);
 return expense.date>datebefore7;
   });
+const cancelEror=()=>{
+  seterror(null);
+}
+  if(error&&!isFetching)
+  return<ErorrScreen message={error} onConfirm={cancelEror}/>
   if(isFetching)
   return <LoadingScreen/>
   return (

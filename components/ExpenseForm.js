@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import format from '../functions/date';
 import{editExpense, storeExpense} from '../functions/http'
 import LoadingScreen from './LoadingScreen';
+import ErorrScreen from './ErorrScreen';
 export default function ExpenseForm({isEditing,id}) {
   console.log(id,isEditing)
 const[input,setInput]=useState({
@@ -30,7 +31,7 @@ const {addExpense,updateExpense,data}=useContext(context);
  setInput({title:defaulttitle,id:id,amount:defaultamount.toString(),date:defaultdate})
 } },[]);
 const [issubmiting,setsubmiting]=useState(false);
-
+const [error,seterror]=useState(null);
  const handleConfirm=async ()=>
  {
 
@@ -48,6 +49,7 @@ Alert.alert("Invalid","Given input is invalid")
 return ;  
 }
 setsubmiting(true)
+try{
  if(isEditing)
  {
  updateExpense({...expense,id:id});
@@ -61,7 +63,19 @@ setsubmiting(true)
  }
  setsubmiting(false)
  navigation.goBack();
+}
+
+catch(err)
+{
+ setsubmiting(false);
+seterror('could not connect to database');
+
+}
  }
+ function cancelEror()
+{
+seterror(null);
+}
  function closeManageExpense()
  {
 
@@ -72,6 +86,8 @@ navigation.goBack();
      setInput((old)=>{return {...old,[changed]:value}})
 
     }
+    if(!issubmiting&&error)
+    return<ErorrScreen message={error} onConfirm={cancelEror}/>
     if(issubmiting)
     return <LoadingScreen/>
   return (

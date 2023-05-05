@@ -1,4 +1,4 @@
-import React, { useContext, useLayoutEffect } from 'react'
+import React, { useContext, useLayoutEffect, useState } from 'react'
 import { View ,Text,StyleSheet} from 'react-native'
 import { EvilIcons } from '@expo/vector-icons';
 import { GlobalStyles } from '../constants/constant';
@@ -8,11 +8,12 @@ import { context } from '../store/context';
 import ExpenseForm from '../components/ExpenseForm';
 import { ScrollView } from 'react-native-gesture-handler';
 import { deletefireExpense } from '../functions/http';
-
+import ErorrScreen from '../components/ErorrScreen';
 export default function ManageExpences({route}) {
   const {removeExpense,addExpense,updateExpense}=useContext(context);
   const navigation=useNavigation();
 const  id=route.params?.id;
+const [error,seterror]=useState(null);
 
 const isEditing=!!id;
 useLayoutEffect(()=>{navigation.setOptions({
@@ -25,21 +26,32 @@ const closeManageExpense=()=>
   navigation.goBack();
 }
 const deleteExpense=async()=>{
-  console.log(id)
+try{
+
 await deletefireExpense(id);
-  removeExpense(id);
+removeExpense(id);
   navigation.goBack();
-
 }
-
-
+catch (err)
+{
+  seterror(true)
+seterror("could not delete");
+}
+  
+}
+const cancelEror=()=>{
+  seterror(null);
+}
+  if(error)
+  return<ErorrScreen message={error} onConfirm={cancelEror}/>
   return (
     
    <View style={style.container}>
     <ScrollView style={{flex:1}}>
+      {isEditing&&
     <View style={style.deleteContainer}>
-    {isEditing&&<Button onPress={deleteExpense}><EvilIcons name="trash" size={24} color={GlobalStyles.colors.error500}/></Button>}
-    </View>
+    <Button onPress={deleteExpense}><EvilIcons name="trash" size={24} color={GlobalStyles.colors.error500}/></Button> 
+    </View> }
     <View>
    
 <ExpenseForm isEditing={isEditing} id={id}></ExpenseForm>
