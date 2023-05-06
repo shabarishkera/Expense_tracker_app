@@ -16,8 +16,8 @@ export default function Button({onPress,children}) {
 }
 
 const style=StyleSheet.create({
-contaier:{padding:8,
-  backgroundColor:GlobalStyles.colors.primary50,
+contaier:{padding:10,
+  backgroundColor:'black',
   borderRadius:4,
 
 
@@ -25,11 +25,12 @@ contaier:{padding:8,
 text:{
 textAlign:'center',
 fontSize:16,
-color:GlobalStyles.colors.primary500,
+color:GlobalStyles.colors.item,
+minWidth:50
 
 },
 textcontainer:{
-  backgroundColor:GlobalStyles.colors.primary50,
+  backgroundColor:'black',
   padding:0,
   borderRadius:5
 }

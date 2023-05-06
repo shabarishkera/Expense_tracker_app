@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { EvilIcons } from '@expo/vector-icons';
+import { GlobalStyles } from '../constants/constant';
 import { Text,View,StyleSheet, Alert
  } from 'react-native'
 import Input from './Input'
@@ -9,7 +11,7 @@ import format from '../functions/date';
 import{editExpense, storeExpense} from '../functions/http'
 import LoadingScreen from './LoadingScreen';
 import ErorrScreen from './ErorrScreen';
-export default function ExpenseForm({isEditing,id}) {
+export default function ExpenseForm({isEditing,id,deleteExpense}) {
   console.log(id,isEditing)
 const[input,setInput]=useState({
 amount:"",
@@ -98,6 +100,7 @@ navigation.goBack();
 <View style={style.optionsContainer}>
 <Button onPress={closeManageExpense}>Cancel</Button>
 <Button onPress={handleConfirm}>Confirm</Button>
+{isEditing && <Button onPress={deleteExpense}><EvilIcons name="trash" size={24} color={GlobalStyles.colors.item}/></Button> }
     </View>
     </View>
   )

@@ -24,11 +24,12 @@ lable:
 },
 input:
 {
-backgroundColor:GlobalStyles.colors.primary100,
+backgroundColor:GlobalStyles.colors.item,
 padding:6,
 borderRadius:5,
 fontSize:29,
 color:'white',
+textAlign:'center'
 }
 
 

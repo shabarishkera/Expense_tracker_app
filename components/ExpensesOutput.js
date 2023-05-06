@@ -29,7 +29,7 @@ else content=fallback;
 container:{
     flex:1,
     padding:23,
-    backgroundColor:GlobalStyles.colors.primary700,
+    backgroundColor:GlobalStyles.colors.back,
     marginBottom:0
 
 

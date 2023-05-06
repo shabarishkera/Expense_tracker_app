@@ -2,7 +2,7 @@ import React, { useContext, useLayoutEffect, useState } from 'react'
 import { View ,Text,StyleSheet} from 'react-native'
 import { EvilIcons } from '@expo/vector-icons';
 import { GlobalStyles } from '../constants/constant';
-import Button from '../components/Button';
+
 import { useNavigation } from '@react-navigation/native';
 import { context } from '../store/context';
 import ExpenseForm from '../components/ExpenseForm';
@@ -17,7 +17,7 @@ const [error,seterror]=useState(null);
 
 const isEditing=!!id;
 useLayoutEffect(()=>{navigation.setOptions({
-  title:isEditing?'edit':'Add Expense'
+  title:isEditing?'edit':'Add Expense',backgroundColor:GlobalStyles.colors.item
   
   })},[isEditing])
 const closeManageExpense=()=>
@@ -48,13 +48,13 @@ const cancelEror=()=>{
     
    <View style={style.container}>
     <ScrollView style={{flex:1}}>
-      {isEditing&&
+      {/* {isEditing&&
     <View style={style.deleteContainer}>
     <Button onPress={deleteExpense}><EvilIcons name="trash" size={24} color={GlobalStyles.colors.error500}/></Button> 
-    </View> }
+    </View> } */}
     <View>
    
-<ExpenseForm isEditing={isEditing} id={id}></ExpenseForm>
+<ExpenseForm isEditing={isEditing} id={id} deleteExpense={deleteExpense}></ExpenseForm>
 
     </View>
  
@@ -63,12 +63,11 @@ const cancelEror=()=>{
    
   )
 }
-
 const style=StyleSheet.create({
   container:
   {flex:1,
   padding:24,
-backgroundColor:GlobalStyles.colors.primary500},
+backgroundColor:GlobalStyles.colors.back},
 deleteContainer:{
   marginTop:20,
   padding:15,

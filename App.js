@@ -12,6 +12,7 @@ import { GlobalStyles } from './constants/constant';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import StoreWrapper from './store/context';
+import IntroScree from './screens/IntroScree';
 export default function App() {
   const stack=createStackNavigator();
  const bottomtab=createBottomTabNavigator();
@@ -23,20 +24,20 @@ navigation.navigate("manageExpense")
 
   }
   return <bottomtab.Navigator screenOptions={{
-    headerStyle:{backgroundColor:GlobalStyles.colors.primary500},
+    headerStyle:{backgroundColor:GlobalStyles.colors.item},
     headerTintColor:'white',
     headerRight:()=>
         <Pressable onPress={handleAddPress}>
-<Entypo name="add-to-list" size={26} color="white" />
+<Entypo name="add-to-list" size={26} color="white" style={{marginRight:20}} />
       </Pressable> 
 ,
-    tabBarStyle:{backgroundColor:GlobalStyles.colors.primary500},
-    tabBarActiveTintColor:GlobalStyles.colors.accent500,
+    tabBarStyle:{backgroundColor:GlobalStyles.colors.item},
+    tabBarActiveTintColor:GlobalStyles.colors.item,
 
   }}>
-  <bottomtab.Screen options={{title:'recent',tabBarLabel
-:"recnet",tabBarIcon:({color,size})=>{
-  return <Ionicons name="timer-outline" size={24} color="white" />
+  <bottomtab.Screen options={{title:'Recent',tabBarLabel
+:"Recent",tabBarIcon:({color,size})=>{
+  return <Ionicons name="timer-outline"  size={24} color="white" />
 }
 }} component={RecentExpences} name="Recent"/>
      <bottomtab.Screen options={{title:'AllExpenses',tabBarLabel
@@ -51,13 +52,15 @@ navigation.navigate("manageExpense")
     <StoreWrapper >
      <StatusBar style="light" />
      <NavigationContainer>
-    <stack.Navigator>
+    <stack.Navigator screenOptions={{backgroundColor:GlobalStyles.colors.item}}>
+      <stack.Screen  component={IntroScree} name='intro' />
     <stack.Screen options={{headerShown:false}}  component={ExpenceOverView} name='overView' />
      <stack.Screen component={ManageExpences} name="manageExpense"
      options={{headerTintColor:'white',
      presentation:'modal',
-     headerStyle:{backgroundColor:GlobalStyles.colors.primary500}}}
-     />
+     headerStyle:{backgroundColor:GlobalStyles.colors.item},
+  }
+    }  />
  
       </stack.Navigator>
       </NavigationContainer>

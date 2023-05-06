@@ -18,7 +18,7 @@ return <Pressable onPress={handleEditPress}>
 <Text style={style.date}>{format(date)}</Text>
 </View>
 <View style={style.amontcontiner}>
-<Text style={style.amount}><FontAwesome name="rupee" size={14} color={GlobalStyles.colors.primary50} />{amount.toFixed(2)}</Text>
+<Text style={style.amount}><FontAwesome name="rupee" size={14} color={GlobalStyles.colors.primary50} /> {amount.toFixed(2)}</Text>
 
 </View>
 </View>
@@ -32,7 +32,7 @@ const style=StyleSheet.create({
     flex:1,
     padding:12,
     marginVertical:10,
-    backgroundColor:GlobalStyles.colors.primary500,
+    backgroundColor:GlobalStyles.colors.item,
     flexDirection:'row',
     elevation:5,
     borderRadius:6,
@@ -53,6 +53,7 @@ color:GlobalStyles.colors.primary50,
         justifyContent:'center',
         alignItems:'center',
         borderRadius:12,
+        minWidth:100
        
 
     },

@@ -3,7 +3,7 @@ export const GlobalStyles = {
       primary50: '#e4d9fd',
       primary100: '#c6affc',
       primary200: '#a281f0',
-      primary400: '#5721d4',
+      primary400: '#1A1C20',
       primary500: '#368dff',
       primary700: '#2d0689',
       primary800: '#200364',
@@ -14,6 +14,11 @@ export const GlobalStyles = {
       gray700: '#221c30',
       prev500:'#3e04c3',
       prev400: '#5721d4',
-      prev50:'#fcc4e4'
+      prev50:'#fcc4e4',
+      back:'#3F3F44',
+      item:'#F9813A',
+      tabs:'1B262C',
+      summary:'#FEC868'
+
     },
   };

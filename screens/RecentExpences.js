@@ -6,6 +6,7 @@ import gerecent from '../functions/getrecent'
 import { fetchExpsne } from '../functions/http'
 import LoadingScreen from '../components/LoadingScreen'
 import ErorrScreen from '../components/ErorrScreen'
+import { GlobalStyles } from '../constants/constant'
 export default function RecentExpences() {
 const {data,setExpense}=useContext(context);
 const [isFetching,setFetching]=useState(true);
@@ -51,6 +52,7 @@ const cancelEror=()=>{
 const style=StyleSheet.create({
 container:
 {
-flex:1
+flex:1,
+backgroundColor:GlobalStyles.colors.back,
 }
 })
