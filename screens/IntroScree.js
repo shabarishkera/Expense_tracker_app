@@ -17,11 +17,11 @@ export default function IntroScree() {
          <Video
        style={{backgroundColor:'white',width:'100%',height:'100%'}}
         source={require('../assets/intro.mp4')}
-        resizeMode={ResizeMode.CONTAIN}
+        resizeMode={ResizeMode.COVER}
         isLooping={false}
         isMuted={false}
         shouldPlay={true}
-        onPlaybackStatusUpdate={status => setStatus(() => status)}
+      
       />
         </View>
     ) 

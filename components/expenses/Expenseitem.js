@@ -19,7 +19,6 @@ return <Pressable onPress={handleEditPress}>
 </View>
 <View style={style.amontcontiner}>
 <Text style={style.amount}><FontAwesome name="rupee" size={14} color={GlobalStyles.colors.primary50} /> {amount.toFixed(2)}</Text>
-
 </View>
 </View>
 
@@ -52,7 +51,7 @@ color:GlobalStyles.colors.primary50,
         backgroundColor:'white',
         justifyContent:'center',
         alignItems:'center',
-        borderRadius:12,
+        borderRadius:6,
         minWidth:100
        
 

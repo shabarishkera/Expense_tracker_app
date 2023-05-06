@@ -31,7 +31,7 @@ navigation.navigate("manageExpense")
 <Entypo name="add-to-list" size={26} color="white" style={{marginRight:20}} />
       </Pressable> 
 ,
-    tabBarStyle:{backgroundColor:GlobalStyles.colors.item},
+    tabBarStyle:{backgroundColor:'black'},
     tabBarActiveTintColor:GlobalStyles.colors.item,
 
   }}>
