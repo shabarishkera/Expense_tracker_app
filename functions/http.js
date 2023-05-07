@@ -6,7 +6,6 @@ export async function storeExpense(expense) {
     const id = res.data.name;
     return id;
 
-
 }
 export async function fetchExpsne() {
     const res = await axios.get(url);

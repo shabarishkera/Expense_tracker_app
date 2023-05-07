@@ -14,6 +14,8 @@ import { Entypo } from '@expo/vector-icons';
 import StoreWrapper from './store/context';
 import IntroScree from './screens/IntroScree';
 import CategoryScreen from './screens/CategoryScreen';
+import GoodExpensesScreen from './screens/GoodExpensesScreen';
+import BadExpenses from  './screens/BadExpensesScreen';
 export default function App() {
   const stack=createStackNavigator();
  const bottomtab=createBottomTabNavigator();
@@ -46,6 +48,18 @@ navigation.navigate("category")
   return <Ionicons name="calendar" size={24} color="white" />
 }
 }} component={AllExpences} name="allExpense"/>
+
+<bottomtab.Screen options={{title:'AllExpenses',tabBarLabel
+:"All",tabBarIcon:({color,size})=>{
+  return <Entypo name="emoji-happy" size={24} color="white" />
+}
+}} component={GoodExpensesScreen} name="good"/>
+ <bottomtab.Screen options={{title:'AllExpenses',tabBarLabel
+:"All",tabBarIcon:({color,size})=>{
+  return <Entypo name="emoji-sad" size={24} color="white" />
+}
+}} component={BadExpenses} name="bad"/>
+
   </bottomtab.Navigator>
  }
   return (

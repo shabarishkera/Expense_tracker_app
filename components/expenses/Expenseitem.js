@@ -5,16 +5,21 @@ import {FontAwesome} from '@expo/vector-icons';
 import format from '../../functions/date';
 import {useNavigation} from '@react-navigation/native';
 import {Icon} from '@rneui/themed';
-export default function Expenseitem({id, title, date, amount}) {
+import { setMarked } from '../../functions/MarkedExpensehttps';
+export default function Expenseitem({id, title, date, amount,dontShow}) {
     const navigation = useNavigation();
     const handleEditPress = () => {
         navigation.navigate("manageExpense", {id: id})
 
     }
 
-    const addToUnworthy = () => {}
-    const addToworthy = () => {}
-    // add an quote section that displays quote
+    const addToUnworthy = () => {  
+        setMarked("BAD",{title,date,amount});
+    }
+    const addToworthy = () => {
+        setMarked("GOOD",{title,date,amount});
+    }
+   
 
     return <View style={style.totalwrapper}>
         <Pressable onPress={handleEditPress}>
@@ -49,7 +54,7 @@ export default function Expenseitem({id, title, date, amount}) {
             </View>
 
         </Pressable>
-        <View style={
+       {dontShow&& <View style={
             style.decide
         }>
 
@@ -57,7 +62,7 @@ export default function Expenseitem({id, title, date, amount}) {
                 onPress={addToUnworthy}/>
             <Icon raised name='emoji-happy' type='entypo' color='#f50'
                 onPress={addToworthy}/>
-        </View>
+        </View> }
     </View>
 }
 
