@@ -1,24 +1,26 @@
 import React from 'react'
-import { FlatList,Text,StyleSheet } from 'react-native'
+import {FlatList, Text, StyleSheet} from 'react-native'
 import Expenseitem from './Expenseitem'
-import { Colors } from 'react-native/Libraries/NewAppScreen'
-import { GlobalStyles } from '../../constants/constant'
+import {Colors} from 'react-native/Libraries/NewAppScreen'
+import {GlobalStyles} from '../../constants/constant'
 
 export default function ExpenseList({expenses}) {
-    const handlerender=(item)=>
-    {
-return <Expenseitem {...item.item} />
+    const handlerender = (item) => {
+        return <Expenseitem {...item.item}/>
 
     }
-  return (
-    <FlatList data={expenses}  renderItem={handlerender} key={(item)=>item.item.id} ></FlatList>
-  )
+    return (
+        <FlatList data={expenses}
+            renderItem={handlerender}
+            key={
+                (item) => item.item.id
+        }></FlatList>
+    )
 }
-const style=StyleSheet.create({
-    container:
-    {
-    flex:1,
-    marginBottom:32,
-    backgroundColor:GlobalStyles.colors.back,
+const style = StyleSheet.create({
+    container: {
+        flex: 1,
+        marginBottom: 32,
+        backgroundColor: GlobalStyles.colors.back
     }
-    })
+})

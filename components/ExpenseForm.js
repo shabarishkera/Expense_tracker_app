@@ -63,7 +63,7 @@ try{
 
  }
  setsubmiting(false)
- navigation.goBack();
+ navigation.navigate("allExpense");
 }
 
 catch(err)
