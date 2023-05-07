@@ -11,6 +11,7 @@ export default function ExpenseList({expenses}) {
     }
     return (
         <FlatList data={expenses}
+        showsVerticalScrollIndicator={false}
             renderItem={handlerender}
             key={
                 (item) => item.item.id

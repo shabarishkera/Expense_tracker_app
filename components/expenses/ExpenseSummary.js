@@ -31,7 +31,9 @@ const style = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        borderRadius: 4
+        borderRadius: 4,
+        marginBottom:50,
+        minHeight:90
 
     },
     sum: {

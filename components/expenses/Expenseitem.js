@@ -16,7 +16,7 @@ export default function Expenseitem({id, title, date, amount}) {
     const addToworthy = () => {}
     // add an quote section that displays quote
 
-    return <View>
+    return <View style={style.totalwrapper}>
         <Pressable onPress={handleEditPress}>
             <View style={
                 style.container
@@ -71,7 +71,12 @@ const style = StyleSheet.create({
         elevation: 5,
         borderRadius: 6,
         justifyContent: 'space-between',
-        minHeight: 100
+        minHeight: 100,
+       
+    },
+    totalwrapper:{
+        marginBottom:50,
+
     },
     decide: {
         flex: 1,
