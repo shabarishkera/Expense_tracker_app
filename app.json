@@ -4,8 +4,8 @@
     "slug": "expence-tracker-app",
     "version": "1.0.0",
     "orientation": "default",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/money.png",
+    "userInterfaceStyle": "dark",
     "splash": {
       "image": "./assets/peakpx.jpg",
       "resizeMode": "cover",

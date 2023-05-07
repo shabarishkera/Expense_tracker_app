@@ -14,7 +14,12 @@ export default function ManageExpences({route}) {
   const navigation=useNavigation();
 const  id=route.params?.id;
 const [error,seterror]=useState(null);
+var  titlegiven=route.params.title;
+if (!titlegiven)
+{
+titlegiven='';
 
+}
 const isEditing=!!id;
 useLayoutEffect(()=>{navigation.setOptions({
   title:isEditing?'edit':'Add Expense',backgroundColor:GlobalStyles.colors.item
@@ -54,7 +59,7 @@ const cancelEror=()=>{
     </View> } */}
     <View>
    
-<ExpenseForm isEditing={isEditing} id={id} deleteExpense={deleteExpense}></ExpenseForm>
+<ExpenseForm isEditing={isEditing} id={id} title={titlegiven} deleteExpense={deleteExpense}></ExpenseForm>
 
     </View>
  

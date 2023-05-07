@@ -11,13 +11,12 @@ import format from '../functions/date';
 import{editExpense, storeExpense} from '../functions/http'
 import LoadingScreen from './LoadingScreen';
 import ErorrScreen from './ErorrScreen';
-export default function ExpenseForm({isEditing,id,deleteExpense}) {
+export default function ExpenseForm({isEditing,id,deleteExpense,title}) {
   console.log(id,isEditing)
 const[input,setInput]=useState({
 amount:"",
 date:'',
-title:''
-
+title:title
 });
 
 const navigation=useNavigation();

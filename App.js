@@ -13,6 +13,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import StoreWrapper from './store/context';
 import IntroScree from './screens/IntroScree';
+import CategoryScreen from './screens/CategoryScreen';
 export default function App() {
   const stack=createStackNavigator();
  const bottomtab=createBottomTabNavigator();
@@ -20,8 +21,8 @@ export default function App() {
  {
   const navigation=useNavigation();
   const handleAddPress=()=>{
-navigation.navigate("manageExpense")
-
+    //got to category screen and
+navigation.navigate("category")
   }
   return <bottomtab.Navigator screenOptions={{
     headerStyle:{backgroundColor:GlobalStyles.colors.item},
@@ -53,8 +54,9 @@ navigation.navigate("manageExpense")
      <StatusBar style="light" />
      <NavigationContainer>
     <stack.Navigator screenOptions={{backgroundColor:GlobalStyles.colors.item}}>
-      <stack.Screen  component={IntroScree} name='intro' />
+      {/* <stack.Screen  component={IntroScree} name='intro' /> */}
     <stack.Screen options={{headerShown:false}}  component={ExpenceOverView} name='overView' />
+    <stack.Screen  component={CategoryScreen} name="category" />
      <stack.Screen component={ManageExpences} name="manageExpense"
      options={{headerTintColor:'white',
      presentation:'modal',
