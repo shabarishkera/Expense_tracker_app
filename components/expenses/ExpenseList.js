@@ -10,7 +10,7 @@ export default function ExpenseList({expenses}) {
 
     }
     return (
-        <FlatList data={expenses}
+        <FlatList data={expenses} contentContainerStyle={{paddingBottom:56}}
         showsVerticalScrollIndicator={false}
             renderItem={handlerender}
             key={

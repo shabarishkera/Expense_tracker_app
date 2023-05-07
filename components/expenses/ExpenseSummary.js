@@ -18,7 +18,7 @@ export default function ExpenseSummary({period, expenses}) {
                 {period}</Text>
             <Text style={
                 style.sum
-            }><FontAwesome name="rupee"
+            }><FontAwesome name="rupee" 
                     size={20}
                     color='white'/> {totalamount}</Text>
         </View>
