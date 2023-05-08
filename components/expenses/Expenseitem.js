@@ -54,7 +54,7 @@ export default function Expenseitem({id, title, date, amount,dontShow}) {
             </View>
 
         </Pressable>
-       {dontShow&& <View style={
+       <View style={
             style.decide
         }>
 
@@ -62,7 +62,7 @@ export default function Expenseitem({id, title, date, amount,dontShow}) {
                 onPress={addToUnworthy}/>
             <Icon raised name='emoji-happy' type='entypo' color='#f50'
                 onPress={addToworthy}/>
-        </View> }
+        </View> 
     </View>
 }
 

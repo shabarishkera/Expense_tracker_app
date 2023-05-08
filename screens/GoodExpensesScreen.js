@@ -1,12 +1,13 @@
 import {useState,useEffect,React} from 'react'
-import {FlatList, Text, StyleSheet} from 'react-native'
+import {FlatList, Text, StyleSheet,View} from 'react-native'
 import Expenseitem from '../components/expenses/Expenseitem';
 import {Colors} from 'react-native/Libraries/NewAppScreen'
 import {GlobalStyles} from '../constants/constant'
 import { getMardked } from '../functions/MarkedExpensehttps'
+import ExpenseitemMarked from '../components/expenses/ExpenseitemMarked';
 export default function GoodExpensesScreen() {
     const handlerender = (item) => {
-        return <Expenseitem {...item.item}/>
+        return <ExpenseitemMarked {...item.item}/>
 
     }
    
@@ -18,12 +19,13 @@ useEffect(async ()=>{
 setmarked(filterd);
 } ,[])
     return (
+        <View style={style.markedbackground}>
         <FlatList data={marked} contentContainerStyle={{paddingBottom:56}}
         showsVerticalScrollIndicator={false}
             renderItem={handlerender}
             key={
                 (item) => item.item.id
-        }></FlatList>
+        }></FlatList></View>
     )
 }
 const style = StyleSheet.create({
@@ -31,5 +33,10 @@ const style = StyleSheet.create({
         flex: 1,
         marginBottom: 32,
         backgroundColor: GlobalStyles.colors.back
-    }
+    }, markedbackground:{
+        flex:1,
+        backgroundColor:GlobalStyles.colors.back,
+        padding:23
+   
+       }
 })

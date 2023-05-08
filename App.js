@@ -49,13 +49,13 @@ navigation.navigate("category")
 }
 }} component={AllExpences} name="allExpense"/>
 
-<bottomtab.Screen options={{title:'AllExpenses',tabBarLabel
-:"All",tabBarIcon:({color,size})=>{
+<bottomtab.Screen options={{title:'Good Expenses',tabBarLabel
+:"Good",tabBarIcon:({color,size})=>{
   return <Entypo name="emoji-happy" size={24} color="white" />
 }
 }} component={GoodExpensesScreen} name="good"/>
- <bottomtab.Screen options={{title:'AllExpenses',tabBarLabel
-:"All",tabBarIcon:({color,size})=>{
+ <bottomtab.Screen options={{title:'Bad Expenses',tabBarLabel
+:"Bad",tabBarIcon:({color,size})=>{
   return <Entypo name="emoji-sad" size={24} color="white" />
 }
 }} component={BadExpenses} name="bad"/>

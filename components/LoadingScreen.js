@@ -17,7 +17,7 @@ const style = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 13,
-        backgroundColor: GlobalStyles.colors.error50
+        backgroundColor: GlobalStyles.colors.back,
     }
 
 
