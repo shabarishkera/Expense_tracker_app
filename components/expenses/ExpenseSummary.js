@@ -1,14 +1,20 @@
 import React from 'react'
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 import {GlobalStyles} from '../../constants/constant';
+import DetailedSummaryScreen from '../../screens/DetailedSummaryScreen';
+import { useNavigation } from '@react-navigation/native';
 export default function ExpenseSummary({period, expenses}) {
     var totalamount = 0;
     for (let e of expenses) {
         totalamount += e.amount;
     }
-
+    const navigation=useNavigation();
+    const handleSummaryPress=()=>{
+          navigation.navigate("DetailedSummary",{expenses:expenses});
+    }
     return (
+        <Pressable onPress={handleSummaryPress}>
         <View style={
             style.container
         }>
@@ -22,6 +28,7 @@ export default function ExpenseSummary({period, expenses}) {
                     size={20}
                     color='white'/> {totalamount}</Text>
         </View>
+        </Pressable>
     )
 }
 const style = StyleSheet.create({

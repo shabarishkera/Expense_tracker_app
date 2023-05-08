@@ -16,6 +16,7 @@ import IntroScree from './screens/IntroScree';
 import CategoryScreen from './screens/CategoryScreen';
 import GoodExpensesScreen from './screens/GoodExpensesScreen';
 import BadExpenses from  './screens/BadExpensesScreen';
+import DetailedSummaryScreen from './screens/DetailedSummaryScreen';
 export default function App() {
   const stack=createStackNavigator();
  const bottomtab=createBottomTabNavigator();
@@ -70,6 +71,7 @@ navigation.navigate("category");
     <stack.Navigator screenOptions={{backgroundColor:GlobalStyles.colors.item}}>
       {/* <stack.Screen  component={IntroScree} name='intro' /> */}
     <stack.Screen options={{headerShown:false}}  component={ExpenceOverView} name='overView' />
+    <stack.Screen options={{headerShown:false}}  component={DetailedSummaryScreen} name='DetailedSummary' />
     <stack.Screen  component={CategoryScreen} name="category" />
      <stack.Screen component={ManageExpences} name="manageExpense"
      options={{headerTintColor:'white',
