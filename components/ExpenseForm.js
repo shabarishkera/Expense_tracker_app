@@ -15,7 +15,7 @@ export default function ExpenseForm({isEditing,id,deleteExpense,title}) {
   console.log(id,isEditing)
 const[input,setInput]=useState({
 amount:"",
-date:'',
+date:format(new Date()),
 title:title
 });
 

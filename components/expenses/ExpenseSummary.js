@@ -39,9 +39,9 @@ const style = StyleSheet.create({
     sum: {
 
         fontSize: 16,
-        color: GlobalStyles.colors.primary400,
+        color:'white',
         fontWeight: 'bold',
-        color: GlobalStyles.colors.item
+       
 
     },
     peroid: {

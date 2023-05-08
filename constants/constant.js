@@ -18,7 +18,7 @@ export const GlobalStyles = {
       back:'#3F3F44',
       item:'#F9813A',
       tabs:'1B262C',
-      summary:'#FEC868'
+      summary:'#F50'
 
     },
   };

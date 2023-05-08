@@ -5,7 +5,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen'
 import {GlobalStyles} from '../constants/constant'
 import { getMardked } from '../functions/MarkedExpensehttps'
 import ExpenseitemMarked from '../components/expenses/ExpenseitemMarked';
-export default function GoodExpensesScreen() {
+export default function GoodExpensesScreen({navigation}) {
     const handlerender = (item) => {
         return <ExpenseitemMarked {...item.item}/>
 
@@ -13,11 +13,11 @@ export default function GoodExpensesScreen() {
    
    const [marked,setmarked]=useState([]);
 
-useEffect(async ()=>{
- const data=await getMardked();
- const filterd=data.filter((item)=>item.tag=='GOOD')
-setmarked(filterd);
-} ,[])
+   useEffect(()=>{
+navigation.addListener('focus',async ()=>{const data=await getMardked();
+    const filterd=data.filter((item)=>item.tag=='GOOD')
+   setmarked(filterd);}) },[])
+
     return (
         <View style={style.markedbackground}>
         <FlatList data={marked} contentContainerStyle={{paddingBottom:56}}
