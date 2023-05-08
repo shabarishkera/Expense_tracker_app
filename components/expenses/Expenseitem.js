@@ -46,7 +46,7 @@ export default function Expenseitem({id, title, date, amount,dontShow}) {
                     }><FontAwesome name="rupee"
                             size={14}
                             color={
-                                GlobalStyles.colors.primary50
+                                GlobalStyles.colors.item
                             }/> {
                         amount.toFixed(2)
                     }</Text>
@@ -112,7 +112,7 @@ const style = StyleSheet.create({
     },
 
     amount: {
-        color: GlobalStyles.colors.primary50,
+        color: GlobalStyles.colors.item,
         fontWeight: 'bold'
 
     }
