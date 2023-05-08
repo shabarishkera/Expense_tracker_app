@@ -24,7 +24,7 @@ export default function App() {
   const navigation=useNavigation();
   const handleAddPress=()=>{
     //got to category screen and
-navigation.navigate("category")
+navigation.navigate("category");
   }
   return <bottomtab.Navigator screenOptions={{
     headerStyle:{backgroundColor:GlobalStyles.colors.item},
