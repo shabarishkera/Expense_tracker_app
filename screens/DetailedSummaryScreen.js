@@ -2,7 +2,13 @@ import React from 'react'
 import { View,StyleSheet,Text } from 'react-native';
 import {GlobalStyles} from '../constants/constant'
 export default function DetailedSummaryScreen({route}) {
-const  expenses=route.params.expenses;
+  const  expenses=route.params.expenses;
+  const amountarray=expenses.map((item)=>item.amount);
+  console.log(amountarray)
+  const totalexpene=0;
+  const sumofexpense=0;
+  const maximumexpense=0;
+
   return (
     <View style={style.container}>
       <View style={style.head}>
@@ -24,12 +30,19 @@ gap:20,
 body:{
 backgroundColor:'white',
 flex:2,
-width:'100%'
+width:'100%',
+borderRadius:7,
+justifyContent:'center',
+alignItems:'center',
 },
 head:{
 flex:1,
-backgroundColor:'red',
+borderRadius:7,
+backgroundColor:'white',
 width:'100%',
+marginTop:12,
+justifyContent:'center',
+alignItems:'center',
 }
 
 
