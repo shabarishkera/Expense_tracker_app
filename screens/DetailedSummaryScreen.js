@@ -1,6 +1,7 @@
 import React from 'react'
 import { View,StyleSheet,Text } from 'react-native';
 import {GlobalStyles} from '../constants/constant'
+import Dashboard from '../components/Dashboard';
 export default function DetailedSummaryScreen({route}) {
   const  expenses=route.params.expenses;
   const amountarray=expenses.map((item)=>item.amount);
@@ -14,7 +15,9 @@ export default function DetailedSummaryScreen({route}) {
       <View style={style.head}>
    <Text>detailed view</Text> 
    </View>
-   <View style={style.body}><Text>this is body</Text></View>
+   <View style={style.body}>
+    <Dashboard/>
+   </View>
     </View>
   )
 }
